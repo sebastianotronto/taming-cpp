@@ -1,6 +1,6 @@
 - Getting the parallel version to work was a pain. Two major gotchas:
 	(1) -ltbb had to be added *at the end* of the command line
-	(2) clang requires a libstdc++ option to make this work
+	(2) I was sometimes trying clang, but not clang++
   of course everything was terrible to decipher with C++ compile errors
   being the mess they are.
 - For measuring time I could also use
