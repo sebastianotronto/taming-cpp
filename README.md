@@ -23,4 +23,7 @@ non-standard way.
 
 ## raii
 
+For the
+[second post in the series](https://sebastiano.tronto.net/blog/2024-12-26-taming-cpp-raii/).
+
 Various small examples on constructors, destructors and related things.
