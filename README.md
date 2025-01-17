@@ -27,3 +27,12 @@ For the
 [second post in the series](https://sebastiano.tronto.net/blog/2024-12-26-taming-cpp-raii/).
 
 Various small examples on constructors, destructors and related things.
+
+## Templates
+
+For the
+[third post](https://sebastiano.tronto.net/blog/2025-01-TODO)
+
+Various examples on templates, constraints and concepts.
+
+See also [zmodn](https://git.tronto.net/zmodn).
