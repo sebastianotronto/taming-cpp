@@ -31,7 +31,7 @@ Various small examples on constructors, destructors and related things.
 ## Templates
 
 For the
-[third post](https://sebastiano.tronto.net/blog/2025-01-TODO)
+[third post](https://sebastiano.tronto.net/blog/2025-01-21-taming-cpp-templates)
 
 Various examples on templates, constraints and concepts.
 
