@@ -1,19 +1,24 @@
+#include "bigint.h"
+
 #include <iostream>
 #include <optional>
 #include <tuple>
+#include <type_traits>
 
-std::tuple<int, int, int> extended_gcd(int a, int b) {
+template<typename T>
+std::tuple<T, T, T> extended_gcd(T a, T b) {
 	if (b == 0) return {a, 1, 0};
 	auto [g, x, y] = extended_gcd(b, a%b);
 	return {g, y, x - y*(a/b)};
 }
 
-template<int N>
+template<auto N>
+requires (N > 1)
 class Zmod {
 public:
-	int value;
+	decltype(N) value;
 
-	Zmod(int z) : value{(z%N + N) % N} {}
+	Zmod(decltype(N) z) : value{(z%N + N) % N} {}
 
 	Zmod operator+(const Zmod& z) const { return value + z.value; }
 	Zmod operator-(const Zmod& z) const { return value - z.value; }
@@ -36,19 +41,17 @@ public:
 };
 
 int main() {
-	Zmod<57> x(34);
-	Zmod<57> y(11);
+	constexpr BigInt N("1000000000000000000000000000000");
+	Zmod<N> x(BigInt("123456781234567812345678"));
+	Zmod<N> y(BigInt("987654321987654321"));
 
-	std::cout << "34 * 11 = " << (x * y).value << " (mod 57)" << std::endl;
+	std::cout << x.value << " * "
+	          << y.value << " (mod " << N << ") = "
+	          << (x * y).value << std::endl;
 
-	if (auto inv = y.inverse(); inv)
-		std::cout << "11 * " << inv.value().value << " = 1 (mod 57)" << std::endl;
-	else
-		std::cout << "11 is not invertible in Z/57Z" << std::endl;
-
-
-	// The following line gives a run-time exception
-	// Zmod<0> z(157);
+	// The following gives a compile error on the first % operation
+	// constexpr double M = 3.14;
+	// Zmod<M> z(4);
 
 	return 0;
 }

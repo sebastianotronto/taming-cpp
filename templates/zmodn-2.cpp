@@ -15,7 +15,6 @@ public:
 	int value;
 
 	Zmod(int z) : value{(z%N + N) % N} {}
-	int toint() const { return value; }
 
 	Zmod operator+(const Zmod& z) const { return value + z.value; }
 	Zmod operator-(const Zmod& z) const { return value - z.value; }
